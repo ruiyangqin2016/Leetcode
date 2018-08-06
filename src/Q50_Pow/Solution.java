@@ -6,7 +6,7 @@ public class Solution {
     public static void main(String[] args) {
 //        System.out.println(Math.pow(2, 2147483647) + " " + Integer
 //                .MIN_VALUE);
-        System.out.println(Pow(2,2));
+        System.out.println(Pow(2,5));
     }
 
     public static double Pow(double x, int n) {
@@ -19,18 +19,14 @@ public class Solution {
         long neg = (n < 0) ? ((long)n * -1) : n;
 
         while (neg > 0) {
-            long hold = neg & 1;
-            if (hold == 1) {
+            if ((neg & 1) == 1) {
                 ret *= x;
             }
             x *= x;
             neg >>= 1;
         }
 
-        if (n < 0) {
-            return 1 / ret;
-        } else {
-            return ret;
-        }
+        if (n < 0) return 1 / ret;
+        else return ret;
     }
 }
