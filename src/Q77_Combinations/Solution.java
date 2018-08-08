@@ -3,11 +3,18 @@ package Q77_Combinations;
 import Q24_SwapNodes.ListNode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
     public static void main(String[] args) {
-
+        int n = 3;
+        int k = 2;
+        List<List<Integer>> ret = combine(n, k);
+        int length = ret.size();
+        for (int i = 0; i < length; i++) {
+            System.out.println(Arrays.toString(ret.get(i).toArray()));
+        }
     }
 
     public static List<List<Integer>> combine(int n, int k) {
