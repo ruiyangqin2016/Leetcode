@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Solution {
     public static void main(String[] args) {
-        String s = "III";
+        String s = "MCMXCIV";
         int ans = romanToInt(s);
         System.out.println(ans);
     }
@@ -21,11 +21,19 @@ public class Solution {
         table.put('M', 1000);
 
         int sum = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int num = table.get(s.charAt(i));
-
+        boolean trigger = false;
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (trigger) {
+                sum -= table.get(s.charAt(i));
+            } else {
+                sum += table.get(s.charAt(i));
+            }
+            if (i != 0 && table.get(s.charAt(i)) > table.get(s.charAt(i - 1))) {
+                trigger = true;
+            } else {
+                trigger = false;
+            }
         }
-
         return sum;
     }
 }
